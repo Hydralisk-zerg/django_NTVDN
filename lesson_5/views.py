@@ -4,6 +4,9 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from lesson_5.models import Flower, Bouquet, Client
+from django.contrib.auth.models import User
+from django.core.files import File
+
 
 def create_flower(request):
     rouse = Flower()
@@ -21,19 +24,22 @@ def create_flower(request):
 
     
 def create_client(request):
-    with open('requirements.txt', 'r') as _file:
-        tmp_file = _file.read
-
-    Client.objects.create(**{
+    client = Client.objects.create(**{
+        'user' : User.objects.get(pk=2),
         'second_email': 'admin@amdmin.com',
         'name': 'MyName',
-        'invoice': tmp_file,
+        'invoice': File(open('requirements.txt')),
         'user_uuid': uuid4(),
         'discount_size': Decimal('0.00052'),
         'client_ip': '192.0.2.1',
     })
-    return HttpResponse(request, 'Created!!')
+    return HttpResponse(client)
 
     
 def get_flower(request):
-    return HttpResponse('Flowers')
+    price = Bouquet.shop.get(id=2).price
+    price1 = Bouquet.shop.get(id=2).frech_period
+    price2 = Bouquet.shop.get(id=2).photo
+    price3 = Bouquet.shop.get(id=2).flowers
+    
+    return HttpResponse(f'{price} {price1} {price2} {price3}')
