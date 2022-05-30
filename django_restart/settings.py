@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'lesson_3',
     'lesson_5',
     'lesson_7',
+    'lesson_8',
     
 ]
 
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'django_restart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['lesson_7','lesson_8'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,7 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = 'lesson_5/static/tmp/'
+MEDIA_ROOT = 'lesson_7/static/tmp/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
