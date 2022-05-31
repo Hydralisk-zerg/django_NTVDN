@@ -39,14 +39,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'durationwidget',
+    'rest_framework',
     'lesson_1',
     'lesson_2',
     'lesson_3',
     'lesson_5',
     'lesson_7',
     'lesson_8',
-    
+    'lesson_9',  
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE' : 10
+}
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#     ]
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
